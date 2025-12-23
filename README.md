@@ -1,73 +1,63 @@
-WebGL based 3D interior designing tool with 2D Floor Planer
-## About
-This is a customizable application built on three.js that allows users to design an interior space such as a home or apartment.
+# 3dfloor (Blueprint3D) — Next.js wrapper (Netlify-ready)
 
-[Live Demo](http://amitukind.com/projects/architect3d/)
+This repo wraps the original `build/` demo (jQuery + BP3DJS) inside a modern **Next.js** app so you can deploy and grow it incrementally.
 
-![](./images/architect3d.jpg)
+✅ Keeps all existing functionality (2D floorplanner, 3D viewer, load/save, item inventory, etc.)
 
- Below are screenshots from  [Live Demo](http://amitukind.com/projects/architect3d/)
+✅ Runs client-side (the legacy scripts are loaded in-order after hydration)
 
-1) Create 2D floorplan:
+✅ Deploys on **Netlify** using `@netlify/plugin-nextjs`
 
-![floorplan](./images/floorplan2d.png)
+---
 
-2) Add items:
+## Local development
 
-![add_items](./images/items.png)
-
-3) Design in 3D:
-
-![3d_design](./images/floorplan3d.png)
-
-## Developing and Running Locally
-
-To get started, clone the repository and ensure you npm >= 3 and rollup installed, then run:
-
-    npm install
-    rollup -c
-
-Rollup will only run if you have enabled command execution . If not run the following command first :
 ```bash
-//Windows 10
-Get-ExecutionPolicy -List
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-```
-The latter command generates `build/js/bp3djs.js` from `src`. 
-
-```
-NODE_ENV=production rollup -c
+npm install
+npm run dev
 ```
 
-The above command will generate `build/js/bp3djs.min.js` a minified and uglified version of the js. The easiest way to run locally is by
+Open http://localhost:3000
 
+---
+
+## Build
+
+```bash
+npm run build
+npm run start
 ```
-     rollup -c -w
-```
-Then, visit `http://localhost:10001` in your browser.
 
+---
 
-## Directory Structure
+## Deploy to Netlify
 
-### `src/` Directory
+1. Push this repo to GitHub/GitLab.
+2. In Netlify: **Add new site → Import an existing project**.
+3. Build settings (auto-detected from `netlify.toml`):
+   - Build command: `npm run build`
+   - Plugin: `@netlify/plugin-nextjs`
 
-The `src` directory contains the core of the project. Here is a description of the various sub-directories:
+That’s it.
 
-`core` - Basic utilities such as logging and generic functions
+---
 
-`floorplanner` - 2D view/controller for editing the floorplan
+## How it works
 
-`items` - Various types of items that can go in rooms
+- The original static assets are copied to `public/` (`/css`, `/js`, `/models`, `/rooms`, ...).
+- The UI markup from the original `build/index.html` is rendered via React.
+- A small loader script then loads the legacy scripts sequentially:
+  `jquery → plugins → BP3DJS → items → app.js`.
 
-`model` - Data model representing both the 2D floorplan and all of the items in it
+This gives you a **Next.js/React** foundation without rewriting the entire planner at once.
 
-`three` - 3D view/controller for viewing and modifying item placement
+---
 
+## Next steps (optional refactor path)
 
-## DOCS ##
-Included
+If you want to scale the UI in React over time:
 
+- Replace the `dangerouslySetInnerHTML` markup with real React components.
+- Move jQuery event wiring (buttons, modal, etc.) into React handlers.
+- Keep BP3DJS as a pure rendering/engine layer, controlled by React state.
 
-
-## Author
-[@amitukind](https://github.com/amitukind/) | [Website](http://amitukind.com/) | [amitverma.ukind@gmail.com](mailto:amitverma.ukind@gmail.com)
