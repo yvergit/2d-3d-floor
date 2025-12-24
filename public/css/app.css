@@ -1,48 +1,3 @@
-/* ============================================================
-  app.css — Cozy / Animal-Crossing-inspired UI skin
-  - Pure CSS (no HTML changes required)
-  - Preserves your existing selectors/IDs
-  - Adds optional utility classes you can adopt gradually:
-    .panel, .panel-title, .panel-sub, .btn, .btn.primary, .btn.secondary,
-    .btn.ghost, .btn.danger, .dock, .chip
-============================================================ */
-
-/* ---------- Cozy theme variables ---------- */
-:root{
-  --bg-sky: #bfe8ff;
-  --bg-mint: #c9f7d6;
-  --bg-sand: #fff2cf;
-  --bg-cream: #fffaf0;
-
-  --ink: #2b2b2b;
-  --muted: rgba(20, 24, 28, .65);
-
-  --card: rgba(255, 250, 240, .86);
-  --card-strong: rgba(255, 250, 240, .94);
-  --stroke: rgba(40, 28, 18, .12);
-
-  --shadow: 0 10px 30px rgba(0,0,0,.12);
-  --shadow-soft: 0 6px 18px rgba(0,0,0,.10);
-
-  --radius-xl: 22px;
-  --radius-lg: 18px;
-  --radius-md: 14px;
-  --radius-sm: 12px;
-
-  --blur: blur(10px);
-
-  --accent: #56c2a5;     /* mint */
-  --accent-2: #ffb36b;   /* peach */
-  --accent-3: #7db7ff;   /* sky */
-  --danger: #ff6b6b;
-
-  --ring: 0 0 0 4px rgba(86, 194, 165, .25);
-
-  /* Use your app font; if you load fonts elsewhere, they'll apply automatically */
-  --font-ui: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-}
-
-/* ---------- Your originals (kept + modernized) ---------- */
 html {
   overflow: hidden;
   height: 100%;
@@ -53,10 +8,6 @@ body {
   padding: 0;
   overflow: hidden;
   height: 100%;
-  font-family: var(--font-ui);
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 div {
@@ -64,180 +15,76 @@ div {
   padding: 0;
 }
 
-/* ---------- Cozy background (no images required) ---------- */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -3;
-  background:
-    radial-gradient(1200px 700px at 20% 10%, var(--bg-sky) 0%, transparent 60%),
-    radial-gradient(900px 600px at 80% 20%, var(--bg-mint) 0%, transparent 60%),
-    radial-gradient(1200px 800px at 50% 95%, var(--bg-sand) 0%, transparent 60%),
-    linear-gradient(180deg, #f7feff 0%, #f7fff8 40%, #fffaf0 100%);
+.ui-toolip
+{
+	width: auto;
+	height: auto;
 }
 
-body::after{
-  content:"";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  opacity: .25;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none'%3E%3Cpath d='M34 34c10 2 18 10 20 20-10-2-18-10-20-20Z' fill='%2356c2a5' fill-opacity='.35'/%3E%3Cpath d='M82 74c10 2 18 10 20 20-10-2-18-10-20-20Z' fill='%23ffb36b' fill-opacity='.32'/%3E%3Ccircle cx='86' cy='28' r='3' fill='%237db7ff' fill-opacity='.28'/%3E%3Ccircle cx='22' cy='86' r='3' fill='%2356c2a5' fill-opacity='.26'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 140px 140px;
+#interfaces, #interface-controls
+{
+	position: absolute; 
+/* 	width: 100%; */
+/* 	height: 100%; */
 }
 
-/* ---------- Tooltip (kept selector + common fix) ---------- */
-.ui-toolip { width: auto; height: auto; }
-/* (Also support correct spelling if you ever use it) */
-.ui-tooltip { width: auto; height: auto; }
-
-/* ---------- Interface stacking (kept) ---------- */
-#interfaces, #interface-controls {
-  position: absolute;
+#interfaces
+{
+	z-index: 0;
 }
 
-#interfaces {
-  z-index: 0;
+#interface-controls
+{
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+	bottom: 10px;
+	z-index: 100;
+}
+#camera-controls
+{
+	float: left;
+/* 	right: 50%; */
+/* 	bottom: 50px; */
 }
 
-#interface-controls {
-  margin: 0 auto;
-  width: 100%;
-  text-align: center;
-  bottom: 14px; /* slightly lifted for modern spacing */
-  z-index: 100;
-
-  /* Important: keep canvas interactions working */
-  pointer-events: none;
-}
-
-/* If you have a container inside #interface-controls, it stays clickable */
-#interface-controls > * {
-  pointer-events: auto;
-}
-
-/* Optional cozy dock style when you wrap bottom buttons */
-#interface-controls .dock {
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.6);
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-}
-
-/* ---------- Camera controls (kept) ---------- */
-#camera-controls {
-  float: left;
-}
-
-/* ---------- Surfaces (kept) ---------- */
-#floorplanner, #viewer {
+#floorplanner, #viewer
+{  
   position: absolute;
   width: 100vw;
-  height: 100vh;
-  inset: 0;
-  background: transparent;
+  height:100vh;
 }
 
-/* ---------- Controls layout (kept + made “cozy card” by default) ---------- */
-#floorplanner-controls {
+#floorplanner-controls 
+{
   position: absolute;
   left: 0;
   top: 0;
-  margin: 16px 0;
-  padding: 0 16px;
+  margin: 20px 0;
+  padding: 0 20px; 
   width: 100%;
-  z-index: 50;
-
-  /* keep drag/draw interactions smooth */
-  pointer-events: none;
 }
-#floorplanner-controls > * { pointer-events: auto; }
 
 #main-controls {
   position: absolute;
-  top: 18px;
-  left: 18px;
-  padding: 0;
-  z-index: 60;
-
-  /* allow clicks inside, but not block canvas elsewhere */
-  pointer-events: none;
-}
-#main-controls > * { pointer-events: auto; }
-
-/* If your existing app places buttons directly inside #main-controls,
-   this applies a cozy “panel” look without changing HTML. */
-#main-controls {
-  border-radius: var(--radius-xl);
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  padding: 14px;
+  top: 20px;
+  left: 20px;
+  padding: 0;  
 }
 
-/* Slight spacing for common children */
-#main-controls button,
-#main-controls .btn,
-#main-controls a,
-#main-controls input,
-#main-controls select,
-#main-controls .btn-file {
-  margin: 6px 6px 0 0;
+#walltextures
+{
+	position: absolute;
+	right: 100px;
+	top: 100px;
 }
 
-/* ---------- Wall textures panel (kept + modernized) ---------- */
-#walltextures {
-  position: absolute;
-  right: 18px;
-  top: 96px;
-  z-index: 60;
-  pointer-events: none;
-}
-#walltextures > * { pointer-events: auto; }
-
-/* If your wall textures UI is a container inside #walltextures,
-   give it a cozy panel appearance automatically. */
-#walltextures {
-  border-radius: var(--radius-xl);
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  padding: 14px;
-}
-
-/* ---------- Your file button helper (kept + styled) ---------- */
 .btn-file {
   display: inline-block;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-
-  /* Make it look like a cozy pill button */
-  border: 1px solid rgba(0,0,0,.10);
-  background: rgba(255,255,255,.55);
-  padding: 10px 12px;
-  border-radius: 999px;
-  font-weight: 800;
-  box-shadow: 0 8px 0 rgba(0,0,0,.06);
-  user-select: none;
-  transition: transform .08s ease, box-shadow .12s ease;
 }
-
-.btn-file:hover { transform: translateY(-1px); }
-.btn-file:active { transform: translateY(2px); box-shadow: 0 5px 0 rgba(0,0,0,.06); }
 
 .btn-file input[type=file] {
   position: absolute;
@@ -251,174 +98,48 @@ body::after{
   display: block;
 }
 
-/* ---------- Hint (kept + cozy) ---------- */
-.btn-hint {
+.btn-hint 
+{
   position: absolute;
-  left: 18px;
-  bottom: 18px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.6);
-  color: rgba(0,0,0,.75);
-  padding: 10px 12px;
-  border-radius: var(--radius-lg);
+  left: 20px;
+  bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.50);
+  color: #ffffff;
+  padding: 5px 10px;
   z-index: 10;
   display: none;
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  box-shadow: var(--shadow-soft);
-  max-width: min(520px, calc(100vw - 40px));
-  line-height: 1.35;
-  font-weight: 700;
 }
 
-/* ---------- Sidebar active (kept + softened) ---------- */
+
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
-  color: #1f1f1f;
-  background: rgba(86, 194, 165, .35);
-  border-radius: 12px;
+  color: #fff;
+  background-color: #428bca;
 }
 
-/* ---------- Inventory scroll (kept + nicer scrollbar) ---------- */
-.inventory-content {
-  max-height: 500px;
-  overflow-y: auto;
-  padding-right: 6px;
+.inventory-content
+{
+	max-height: 500px;
+	overflow-y: scroll;
 }
-.inventory-content::-webkit-scrollbar { width: 10px; }
-.inventory-content::-webkit-scrollbar-thumb {
-  background: rgba(0,0,0,.14);
-  border-radius: 999px;
-  border: 3px solid rgba(255,255,255,.55);
-}
-.inventory-content::-webkit-scrollbar-track {
-  background: rgba(255,255,255,.25);
-  border-radius: 999px;
-}
+
+/* .ui-dialog, .ui-dialog-content, .ui-widget-content */
+/* { */
+/* 	min-width: 50%; */
+/* 	max-height: 500px; */
+/* 	height: 500px; */
+/*     overflow: auto; */
+/*     position: relative; */
+/*     padding: 0 !important; */
+/* } */
 
 /* Enable multiple lines in bootstrap tooltips */
 .tooltip-inner {
-  white-space: pre-wrap;
+    white-space:pre-wrap;
 }
 
-/* dat.GUI select tweak (kept) */
-.dg select { color: #000000; }
-
-/* ============================================================
-  Optional “Cozy UI” utility classes
-  (Use these if/when you can add classes in your markup.)
-============================================================ */
-.panel{
-  display: inline-flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 14px;
-  border-radius: var(--radius-xl);
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-}
-
-.panel-title{
-  font-weight: 900;
-  font-size: 18px;
-  letter-spacing: .2px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0;
-}
-
-.panel-sub{
-  margin: -6px 0 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.3;
-  font-weight: 700;
-}
-
-.btn{
-  appearance: none;
-  border: 1px solid rgba(0,0,0,.10);
-  background: var(--card-strong);
-  color: var(--ink);
-  padding: 10px 12px;
-  border-radius: 999px;
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform .08s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
-  box-shadow: 0 8px 0 rgba(0,0,0,.06);
-  user-select: none;
-}
-
-.btn:hover{ transform: translateY(-1px); }
-.btn:active{ transform: translateY(2px); box-shadow: 0 5px 0 rgba(0,0,0,.06); }
-.btn:focus-visible{ outline: none; box-shadow: 0 8px 0 rgba(0,0,0,.06), var(--ring); }
-
-.btn.primary{
-  background: linear-gradient(180deg, #7cf2c7, #49caa7);
-  border-color: rgba(0,0,0,.08);
-}
-.btn.secondary{
-  background: linear-gradient(180deg, #ffd2a6, #ffb36b);
-  border-color: rgba(0,0,0,.08);
-}
-.btn.ghost{
-  background: rgba(255,255,255,.45);
-  border-color: rgba(255,255,255,.55);
-}
-.btn.danger{
-  background: linear-gradient(180deg, #ff9a9a, #ff6b6b);
-  border-color: rgba(0,0,0,.08);
-}
-
-.input, select{
-  border-radius: 999px;
-  border: 1px solid rgba(0,0,0,.12);
-  background: rgba(255,255,255,.65);
-  padding: 10px 12px;
-  font-weight: 700;
-  color: var(--ink);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
-}
-.input:focus, select:focus{
-  outline: none;
-  box-shadow: var(--ring);
-  border-color: rgba(86,194,165,.55);
-}
-
-.chip{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(255,255,255,.6);
-  font-weight: 800;
-  color: rgba(0,0,0,.75);
-}
-
-/* ============================================================
-  Responsive tweaks
-============================================================ */
-@media (max-width: 740px){
-  #walltextures{
-    right: 12px;
-    top: 78px;
-    padding: 12px;
-    border-radius: 18px;
-  }
-  #main-controls{
-    top: 12px;
-    left: 12px;
-    padding: 12px;
-    border-radius: 18px;
-  }
-  #interface-controls{
-    bottom: 10px;
-  }
+.dg select
+{
+	color: #000000;
 }

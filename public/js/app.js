@@ -477,7 +477,7 @@ var WallProperties = function()
 		['rooms/textures/wallmap.png', true, 1], ['rooms/textures/wallmap_yellow.png', true, 1],
 		['rooms/textures/light_brick.jpg', false, 50], ['rooms/textures/marbletiles.jpg', false, 300],
 		['rooms/textures/light_brick.jpg', false, 100], ['rooms/textures/light_fine_wood.jpg', false, 300],
-		['rooms/textures/hardwood.webp', false, 300]];
+		['rooms/textures/hardwood.png', false, 300]];
 
 	this.floormaterialname = 0;
 	this.wallmaterialname = 0;

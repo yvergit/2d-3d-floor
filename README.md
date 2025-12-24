@@ -1,63 +1,29 @@
-# 3dfloor (Blueprint3D) — Next.js wrapper (Netlify-ready)
+# 3dfloor • Cozy Edition (Next.js)
 
-This repo wraps the original `build/` demo (jQuery + BP3DJS) inside a modern **Next.js** app so you can deploy and grow it incrementally.
+This is a **fully working Next.js wrapper** around the original BP3DJS build, rebranded as **3dfloor**, with a brand‑new **cozy / Animal‑Crossing‑inspired** (original) UI theme.
 
-✅ Keeps all existing functionality (2D floorplanner, 3D viewer, load/save, item inventory, etc.)
+## What changed
 
-✅ Runs client-side (the legacy scripts are loaded in-order after hydration)
+- ✅ Migrated from static HTML into a clean **Next.js App Router** project (`src/app`).
+- ✅ UI split into components (`src/components/...`) while **keeping legacy IDs/selectors** so the original JS continues to work.
+- ✅ Completely new styling and layout (no copyrighted assets).
+- ✅ Replaced all button icons **except the Save/Upload icons** (`saveFile`, `saveFile2d`, `loadFile`, `loadFile2d`).
 
-✅ Deploys on **Netlify** using `@netlify/plugin-nextjs`
+## Credits
 
----
+- UI redesign & cozy theme: **Yverdon**
+- Original engine + scripts: BP3DJS (legacy build included in `/public`)
 
-## Local development
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+Then open http://localhost:3000
 
----
+## Notes
 
-## Build
-
-```bash
-npm run build
-npm run start
-```
-
----
-
-## Deploy to Netlify
-
-1. Push this repo to GitHub/GitLab.
-2. In Netlify: **Add new site → Import an existing project**.
-3. Build settings (auto-detected from `netlify.toml`):
-   - Build command: `npm run build`
-   - Plugin: `@netlify/plugin-nextjs`
-
-That’s it.
-
----
-
-## How it works
-
-- The original static assets are copied to `public/` (`/css`, `/js`, `/models`, `/rooms`, ...).
-- The UI markup from the original `build/index.html` is rendered via React.
-- A small loader script then loads the legacy scripts sequentially:
-  `jquery → plugins → BP3DJS → items → app.js`.
-
-This gives you a **Next.js/React** foundation without rewriting the entire planner at once.
-
----
-
-## Next steps (optional refactor path)
-
-If you want to scale the UI in React over time:
-
-- Replace the `dangerouslySetInnerHTML` markup with real React components.
-- Move jQuery event wiring (buttons, modal, etc.) into React handlers.
-- Keep BP3DJS as a pure rendering/engine layer, controlled by React state.
-
+- Legacy scripts are loaded in `src/app/page.tsx` (order preserved).
+- All legacy assets (models, textures, thumbnails, etc.) are served from `/public`.
