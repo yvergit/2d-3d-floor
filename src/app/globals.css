@@ -219,9 +219,10 @@ a { color: inherit; }
    Nudge them below the header so they stay visible. */
 .dg,
 .dg.main {
-  top: calc(var(--ac-topbar-h) + 10px) !important;
-  right: 16px !important;
+  bottom: calc(var(--ac-topbar-h) + 10px) !important;
+  right: 50% !important;
   z-index: 80 !important;
+  
 }
 
 /* QuickSettings panels (if enabled by legacy code) */
@@ -447,16 +448,6 @@ a { color: inherit; }
   min-width: 0;
 }
 
-/* Route pointer events to the viewer container (not overlay layers) */
-#viewer { pointer-events: auto; }
-#viewer canvas { pointer-events: auto; }
-
-/* Toolbars should still be clickable */
-#main-controls, #floorplanner-controls {
-  pointer-events: auto;
-}
-
-
 #viewer canvas,
 #three-canvas,
 #floorplanner-canvas {
@@ -483,20 +474,47 @@ a { color: inherit; }
 }
 /* AC_WEBGL_HARDEN_END */
 
-/* --- Pointer alignment: prevent scroll/padding offsets affecting canvas math --- */
-.ac-panel-body {
-  position: relative;
-  overflow: visible;      /* important: don't create a scrolling offset context */
-}
+/* AC_POINTER_FIX_START */
+/* ---------------------------------------------------------
+   Pointer alignment fix for 3D viewer
 
-/* If you need scrolling elsewhere, keep it on the right sidebar only */
-.ac-main > aside.ac-panel .ac-panel-body {
+   Root cause:
+   - The legacy app uses jquery.flip to swap 2D/3D by applying CSS 3D transforms.
+   - Transforms can break offset/picking math for WebGL/raycasting, causing a
+     constant cursor offset.
+
+   Solution:
+   - Use a transform-free flip() shim (public/compat/flip-no-transform.js)
+   - Style the card faces with plain show/hide (no transforms)
+   - Remove extra padding around the legacy mount so event targets/rects align
+   --------------------------------------------------------- */
+
+/* Workspace panel should not add padding around the legacy mount */
+.ac-panel-body--workspace { padding: 0 !important; }
+
+/* Controls panel can scroll independently */
+.ac-panel-body--controls {
   overflow: auto;
   max-height: calc(100dvh - var(--ac-topbar-h) - 64px);
 }
 
-/* Ensure the left workspace keeps a stable box */
-.ac-main > section.ac-panel .ac-panel-body {
-  overflow: visible;
+/* Transform-free flip layout (driven by the shim toggling is-flipped) */
+#interfaces.card.ac-noflip {
+  position: relative !important;
 }
 
+#interfaces.card.ac-noflip > .front,
+#interfaces.card.ac-noflip > .back {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  translate: none !important;
+}
+
+#interfaces.card.ac-noflip > .back { display: none; }
+#interfaces.card.ac-noflip.is-flipped > .front { display: none; }
+#interfaces.card.ac-noflip.is-flipped > .back { display: block; }
+
+/* AC_POINTER_FIX_END */

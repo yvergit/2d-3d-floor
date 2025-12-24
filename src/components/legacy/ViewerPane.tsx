@@ -8,7 +8,6 @@ export function ViewerPane() {
   const didBindRef = useRef(false);
 
   useEffect(() => {
-    
     const viewer = document.getElementById('viewer') as HTMLElement | null;
     if (!viewer) return;
 

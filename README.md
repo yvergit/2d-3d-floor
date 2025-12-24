@@ -11,7 +11,7 @@ This is a **fully working Next.js wrapper** around the original BP3DJS build, re
 
 ## Credits
 
-- UI redesign & cozy theme: **Yverdon**
+- Author: **Yverdon**
 - Original engine + scripts: BP3DJS (legacy build included in `/public`)
 
 ## Run locally

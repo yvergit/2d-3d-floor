@@ -59,6 +59,7 @@ export function SideControls() {
       <div className="ac-minihelp">
         <div className="ac-minihelp-title">Quick help</div>
         <ul>
+          <li><kbd>Click on 3d object</kbd> — before placing furniture</li>
           <li><kbd>Shift</kbd> — snap to axis / grid</li>
           <li><kbd>Esc</kbd> — stop drawing walls</li>
           <li>Double-click corner — adjust elevation</li>

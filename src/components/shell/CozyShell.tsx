@@ -12,8 +12,8 @@ export function CozyShell() {
         <div className="ac-brand">
           <div className="ac-logo" aria-hidden="true" />
           <div className="ac-title">
-            <strong>3dfloor • Cozy Edition</strong>
-            <span>Warm, rounded UI — keeping all original selectors intact</span>
+            <strong>3dfloor</strong>
+            <span>plan your floor in 2d and 3d</span>
           </div>
         </div>
 
@@ -28,11 +28,11 @@ export function CozyShell() {
           <div className="ac-panel-header">
             <div>
               <h2>Workspace</h2>
-              <p>Switch between 2D Floor Plan and 3D Design — everything works like before.</p>
+              <p>Switch between 2D Floor Plan and 3D Design — let's go!</p>
             </div>
             <div className="ac-badge" aria-hidden="true">v1</div>
           </div>
-          <div className="ac-panel-body">
+          <div className="ac-panel-body ac-panel-body--workspace">
             <InterfacesCard />
           </div>
         </section>
@@ -44,13 +44,13 @@ export function CozyShell() {
               <p>Cozy quick actions. IDs preserved so legacy JS continues to work.</p>
             </div>
           </div>
-          <div className="ac-panel-body">
+          <div className="ac-panel-body ac-panel-body--controls">
             <SideControls />
             <div className="ac-divider" />
             <div className="ac-credits">
               <div className="ac-credits-title">Credits</div>
               <p>
-                UI redesign & theme: <strong>Yverdon</strong>.
+                Made by: <strong>Yverdon</strong>.
               </p>
               <p className="ac-credits-muted">
                 Core engine and legacy scripts remain from the original BP3DJS-based build.
