@@ -82,22 +82,21 @@ const BODY_HTML = `
 		<div class="btn-group-vertical" id='viewcontrols' >
 			<div class="btn btn-sm btn-default">
 		            <a class="btn btn-default bottom" href="#" id="leftview" title="Show side view (left)">
-		              <span class="glyphicon glyphicon glyphicon-object-align-left"></span>
-		            </a>
-		            <span class="btn-group-vertical">
-		              <a class="btn btn-default" href="#" id="topview" title="Show top view">
-		                <span class="glyphicon glyphicon glyphicon-object-align-horizontal"></span>
-		              </a>
-		              <a class="btn btn-default" href="#" id="isometryview" title="Show 3d view">
-		                <span class="glyphicon glyphicon glyphicon-inbox"></span>
-		              </a>
-		              <a class="btn btn-default" href="#" id="frontview" title="Show front view">
-		                <span class="glyphicon glyphicon glyphicon-object-align-vertical"></span>
-		              </a>
-		            </span>
-		            <a class="btn btn-default bottom" href="#" id="rightview" title="Show side view (right)" >
-		              <span class="glyphicon glyphicon glyphicon-object-align-right"></span>
-		            </a>
+  <span class="ac-arrow is-left" aria-hidden="true"></span>
+</a>
+
+<a class="btn btn-default" href="#" id="topview" title="Show top view">
+  <span class="ac-arrow is-top" aria-hidden="true"></span>
+</a>
+
+<a class="btn btn-default" href="#" id="frontview" title="Show front view">
+  <span class="ac-arrow is-front" aria-hidden="true"></span>
+</a>
+
+<a class="btn btn-default bottom" href="#" id="rightview" title="Show side view (right)">
+  <span class="ac-arrow is-right" aria-hidden="true"></span>
+</a>
+
 	        </div>
 	        <button id="showSwitchCameraMode" class="btn btn-sm btn-default" title="Switch Camera ortho/perspective">
 				<span class="glyphicon glyphicon-camera"></span>

@@ -1,3 +1,10 @@
+/* ============================================================
+   Cozy UI Theme (Professional polish + working arrows)
+   - Option B supported: <span class="ac-arrow is-left|is-right|is-top|is-front"></span>
+   - Removes the “card” behind the 3D view buttons (bottom-right)
+   ============================================================ */
+
+/* ---------- Base tokens ---------- */
 :root {
   --ac-bg: #fbf7ee;
   --ac-bg-2: #f3efe1;
@@ -9,16 +16,19 @@
   --ac-primary-2: #2f9a95;
   --ac-warn: #f4b860;
 
-  /* Your global shadow tokens */
+  /* Shadows */
   --ac-shadow: 0 12px 30px rgba(20, 12, 6, 0.14);
   --ac-shadow-soft: 0 8px 18px rgba(20, 12, 6, 0.12);
 
+  /* Radii */
   --ac-radius: 18px;
   --ac-radius-sm: 14px;
+
+  /* Fonts */
   --ac-font: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --ac-font-title: "Fredoka", "Nunito", system-ui, sans-serif;
 
-  /* === Button-53 surface styling (applied to topbars/controls/etc) === */
+  /* Surfaces */
   --ac-surface-base: #FAFAFA;
   --ac-surface-base-hover: #F5F5F5;
   --ac-surface-base-active: #F1F1F1;
@@ -38,7 +48,6 @@
     linear-gradient(180deg, rgba(30, 54, 87, 0.00) 0%, rgba(30, 54, 87, 0.01) 100%),
     var(--ac-surface-base-active);
 
-  /* Button-53 “rim + inset highlights” combined with your global shadow token */
   --ac-surface-shadow:
     0 0 0 1px rgba(0, 0, 0, 0.08),
     rgba(0, 0, 0, 0.08) 0 -2px 1px 0 inset,
@@ -58,15 +67,35 @@
     var(--ac-shadow-soft);
 
   --ac-surface-text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
+
+  /* Focus ring */
+  --ac-focus: 0 0 0 4px rgba(56, 178, 172, 0.22);
+
+  /* Arrow tokens (Option B) */
+  --ac-arrow-size: clamp(14px, 2.2vmin, 20px);
+  --ac-arrow-stroke: clamp(2px, 0.55vmin, 4px);
+  --ac-arrow-color: var(--ac-ink);
+  --ac-arrow-hover: var(--ac-warn);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
 body {
   font-family: var(--ac-font);
   color: var(--ac-ink);
   background: radial-gradient(1000px 600px at 10% 10%, #ffffff 0%, var(--ac-bg) 55%, var(--ac-bg-2) 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Dusk mode */
+/* ---------- Dusk mode ---------- */
 body.ac-dusk {
   --ac-bg: #0e1520;
   --ac-bg-2: #121b28;
@@ -80,7 +109,6 @@ body.ac-dusk {
   --ac-shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.32);
   background: radial-gradient(1000px 600px at 10% 10%, #1a2a44 0%, var(--ac-bg) 55%, var(--ac-bg-2) 100%);
 
-  /* Dusk surface equivalents (Button-53 vibe, but dark) */
   --ac-surface-base: rgba(22, 31, 46, 0.72);
   --ac-surface-base-hover: rgba(26, 36, 54, 0.76);
   --ac-surface-base-active: rgba(18, 26, 40, 0.78);
@@ -119,14 +147,17 @@ body.ac-dusk {
     var(--ac-shadow-soft);
 
   --ac-surface-text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.35);
+
+  --ac-arrow-color: var(--ac-ink);
 }
 
+/* ---------- Shell ---------- */
 .ac-shell {
   height: 100vh;
   width: 100vw;
 }
 
-/* === Apply Button-53 surface styling to ALL “bars / chrome” === */
+/* ---------- Global “chrome” surfaces ---------- */
 .ac-topbar,
 #interface-controls,
 #floorplanner-controls,
@@ -143,7 +174,7 @@ body.ac-dusk {
 .thumbnail {
   background: var(--ac-surface-bg);
   box-shadow: var(--ac-surface-shadow);
-  border: none; /* outline handled by the 0 0 0 1px part of the shadow */
+  border: none;
   text-shadow: var(--ac-surface-text-shadow);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -184,14 +215,14 @@ body.ac-dusk {
   box-shadow: var(--ac-surface-shadow-active);
 }
 
-/* Top bar */
+/* ---------- Top bar ---------- */
 .ac-topbar {
   position: fixed;
   top: 14px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 28px); /* keeps mobile spacing */
-  max-width: 777px;         /* controls how small it is on large screens */
+  width: calc(100% - 28px);
+  max-width: 777px;
   z-index: 300;
   display: flex;
   align-items: center;
@@ -212,19 +243,25 @@ body.ac-dusk {
   height: 40px;
   border-radius: 14px;
   border: 1px solid var(--ac-border);
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.75), rgba(255,255,255,0) 55%),
-    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
-    linear-gradient(145deg, #79e2c8, #2db3a8);
+  background-image: url("/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
   box-shadow: var(--ac-shadow-soft);
   text-shadow: none;
 }
 
 body.ac-dusk .ac-logo {
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.20), rgba(255,255,255,0) 55%),
-    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%),
-    linear-gradient(145deg, #6fe8d3, #2e9fb0);
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid var(--ac-border);
+  background-image: url("/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  box-shadow: var(--ac-shadow-soft);
+  text-shadow: none;
 }
 
 .ac-title {
@@ -249,7 +286,7 @@ body.ac-dusk .ac-logo {
   gap: 8px;
 }
 
-/* Make the legacy control bar a modern floating dock */
+/* ---------- Bottom dock ---------- */
 #interface-controls {
   position: fixed;
   left: 14px;
@@ -263,20 +300,20 @@ body.ac-dusk .ac-logo {
   box-shadow: var(--ac-surface-shadow-strong);
 }
 
-/* 2D controls: cozy and centered */
+/* ---------- 2D controls ---------- */
 #floorplanner-controls {
   position: fixed;
   top: 76px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 28px); /* keeps mobile spacing */
-  max-width: 300px;         /* adjust to taste */
+  width: calc(100% - 28px);
+  max-width: 300px;
   margin: 0;
   padding: 10px;
   border-radius: var(--ac-radius);
 }
 
-/* Main controls (keeps your layout; styling is now surface-based) */
+/* ---------- Main controls ---------- */
 #main-controls {
   top: 76px;
   left: 14px;
@@ -284,28 +321,107 @@ body.ac-dusk .ac-logo {
   border-radius: var(--ac-radius);
 }
 
-/* View controls: modern vertical pill */
+/* ============================================================
+   VIEW CONTROLS (bottom-right)
+   - Remove the big “card” behind the buttons
+   - Make buttons float individually
+   ============================================================ */
 #viewcontrols {
   position: fixed;
   right: 14px;
   bottom: 96px;
   z-index: 460;
-  border-radius: var(--ac-radius);
-  padding: 8px;
-  box-shadow: var(--ac-surface-shadow-strong);
+
+  /* IMPORTANT: remove the big background panel */
+  background: transparent !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  text-shadow: none !important;
+
+  padding: 0 !important;
+  border-radius: 0 !important;
 }
 
-/* Buttons: keep behavior; optionally keep your current look or let them inherit surface */
-.btn {
-  border-radius: 999px !important;
+#viewcontrols:hover,
+#viewcontrols:active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Your markup uses a div that mistakenly has .btn classes as a wrapper.
+   Make sure that wrapper does NOT look like a button/card. */
+#viewcontrols > .btn,
+#viewcontrols .btn.btn-sm.btn-default {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
   border: 0 !important;
+}
+
+/* Layout for your view group */
+#viewcontrols .btn-group-vertical {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  vertical-align: middle;
+}
+
+#viewcontrols .btn-group-vertical .btn {
+  margin: 0 !important;
+}
+
+/* Style all actual clickable view buttons */
+#viewcontrols a.btn {
+  width: 46px;
+  height: 46px;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   background: var(--ac-surface-bg) !important;
   color: var(--ac-ink) !important;
+  box-shadow: var(--ac-surface-shadow-strong) !important;
+  text-shadow: none !important;
 
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+#viewcontrols a.btn:hover {
+  transform: translateY(-1px);
+  background: var(--ac-surface-bg-hover) !important;
+  box-shadow: var(--ac-surface-shadow-strong) !important;
+}
+
+#viewcontrols a.btn:active {
+  transform: translateY(0px);
+  background: var(--ac-surface-bg-active) !important;
+  box-shadow: var(--ac-surface-shadow-active) !important;
+}
+
+#viewcontrols a.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ac-focus), var(--ac-surface-shadow-strong) !important;
+}
+
+/* keep left/right buttons aligned with the vertical group */
+#viewcontrols a.btn.bottom {
+  vertical-align: middle;
+}
+
+/* ---------- Global buttons (outside viewcontrols) ---------- */
+.btn {
+  border-radius: 999px !important;
+  border: 0 !important;
+  background: var(--ac-surface-bg) !important;
+  color: var(--ac-ink) !important;
   box-shadow: var(--ac-surface-shadow) !important;
   text-shadow: var(--ac-surface-text-shadow);
-
   transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 
@@ -321,6 +437,11 @@ body.ac-dusk .ac-logo {
   box-shadow: var(--ac-surface-shadow-active) !important;
 }
 
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--ac-focus), var(--ac-surface-shadow-strong) !important;
+}
+
 .btn.btn-primary,
 .btn-primary {
   background: linear-gradient(180deg, var(--ac-primary), var(--ac-primary-2)) !important;
@@ -333,7 +454,7 @@ body.ac-dusk .ac-logo {
 .btn-primary.active,
 .btn.wireframe-active {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.25), var(--ac-shadow) !important;
+  box-shadow: var(--ac-focus), var(--ac-shadow) !important;
 }
 
 .btn.disabled,
@@ -344,7 +465,7 @@ body.ac-dusk .ac-logo {
   text-shadow: none !important;
 }
 
-/* Hint bubble */
+/* ---------- Hint bubble ---------- */
 .btn-hint {
   left: 16px;
   bottom: 16px;
@@ -352,7 +473,7 @@ body.ac-dusk .ac-logo {
   padding: 10px 12px;
 }
 
-/* Toasts */
+/* ---------- Toasts ---------- */
 .ac-toast-root {
   position: fixed;
   top: 84px;
@@ -372,7 +493,7 @@ body.ac-dusk .ac-logo {
   font-size: 13px;
 }
 
-/* Banner (keeps its warm gradient, but uses your shadow token) */
+/* ---------- Banner ---------- */
 .ac-banner {
   position: fixed;
   left: 14px;
@@ -401,7 +522,7 @@ body.ac-dusk .ac-logo {
 
 .ac-hidden { display: none !important; }
 
-/* Inventory tools */
+/* ---------- Inventory tools ---------- */
 .ac-inventory-tools {
   display: flex;
   gap: 8px;
@@ -421,10 +542,10 @@ body.ac-dusk .ac-logo {
 
 .ac-inventory-tools .form-control:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.20), var(--ac-surface-shadow-strong);
+  box-shadow: var(--ac-focus), var(--ac-surface-shadow-strong);
 }
 
-/* Recents */
+/* ---------- Recents ---------- */
 .ac-recents {
   padding: 10px;
   border-radius: var(--ac-radius-sm);
@@ -437,7 +558,7 @@ body.ac-dusk .ac-logo {
   margin-bottom: 6px;
 }
 
-/* Help modal (custom, non-bootstrap) */
+/* ---------- Modal ---------- */
 .ac-modal {
   position: fixed;
   inset: 0;
@@ -510,7 +631,7 @@ body.ac-dusk .ac-modal-head {
   text-shadow: none;
 }
 
-/* Footer */
+/* ---------- Footer ---------- */
 .ac-footer {
   position: fixed;
   left: 14px;
@@ -523,7 +644,7 @@ body.ac-dusk .ac-modal-head {
   text-shadow: none;
 }
 
-/* Make modal look less bootstrap-y */
+/* ---------- Bootstrap modal polish ---------- */
 .modal-content {
   border-radius: var(--ac-radius) !important;
   border: 0 !important;
@@ -553,7 +674,7 @@ body.ac-dusk .modal-footer {
   border-radius: 12px;
 }
 
-/* Optional: keep your original Button-53 class around (now driven by tokens) */
+/* ---------- Optional Button-53 ---------- */
 .button-53 {
   padding: 12px 26px;
   border: 0;
@@ -570,12 +691,89 @@ body.ac-dusk .modal-footer {
 .button-53:hover { background: var(--ac-surface-bg-hover); }
 .button-53:active { background: var(--ac-surface-bg-active); box-shadow: var(--ac-surface-shadow-active); }
 
-/* Small screens: reduce chrome */
+/* ============================================================
+   ARROW (Option B) — this is what you were missing
+   Use:
+     <span class="ac-arrow is-left"></span>
+     <span class="ac-arrow is-right"></span>
+     <span class="ac-arrow is-top"></span>
+     <span class="ac-arrow is-front"></span>
+   ============================================================ */
+.ac-arrow {
+  width: var(--ac-arrow-size);
+  height: var(--ac-arrow-size);
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  pointer-events: none; /* don't block clicks */
+
+  /* Base arrow like your original (rotated -45deg), then direction adjustment */
+  transform: rotate(calc(-45deg + var(--ac-arrow-dir, 0deg)));
+  transform-origin: 50% 50%;
+}
+
+/* Direction modifiers */
+.ac-arrow.is-right { --ac-arrow-dir: 0deg; }
+.ac-arrow.is-left  { --ac-arrow-dir: 180deg; }
+.ac-arrow.is-top   { --ac-arrow-dir: -90deg; }
+.ac-arrow.is-front { --ac-arrow-dir: 90deg; }
+
+/* Arrow strokes */
+.ac-arrow::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-width: var(--ac-arrow-stroke) var(--ac-arrow-stroke) 0 0;
+  border-style: solid;
+  border-color: var(--ac-arrow-color);
+  transition: .2s ease;
+  display: block;
+  transform-origin: 100% 0;
+}
+
+.ac-arrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-width: 0 var(--ac-arrow-stroke) 0 0;
+  border-style: solid;
+  border-color: var(--ac-arrow-color);
+  transform-origin: 100% 0;
+  transition: .2s ease;
+}
+
+/* Hover animation (triggered by the button/anchor hover) */
+a.btn:hover .ac-arrow::after {
+  transform: rotate(45deg);
+  border-color: var(--ac-arrow-hover);
+  height: 120%;
+}
+
+a.btn:hover .ac-arrow::before {
+  border-color: var(--ac-arrow-hover);
+  transform: scale(.8);
+}
+
+/* If your old glyphicons are still in DOM anywhere, hide them inside view buttons */
+#leftview .glyphicon,
+#rightview .glyphicon,
+#topview .glyphicon,
+#frontview .glyphicon {
+  display: none !important;
+}
+
+/* ============================================================
+   Small screens
+   ============================================================ */
 @media (max-width: 560px) {
   .ac-subtitle { display: none; }
   #floorplanner-controls { left: 10px; right: 10px; }
   #main-controls { left: 10px; }
   #interface-controls { left: 10px; right: 10px; }
-  .ac-topbar { left: 10px; right: 10px; }
+  .ac-topbar { left: 10px; right: 10px; transform: none; }
   .ac-footer { display: none; }
+
+  /* Keep view controls tight */
+  #viewcontrols { right: 10px; bottom: 90px; }
+  #viewcontrols a.btn { width: 44px; height: 44px; }
 }
