@@ -58,18 +58,25 @@
       }, 3000);
     }
 
-    // Dusk mode
-    (function initTheme() {
-      var saved = localStorage.getItem(THEME_KEY);
-      if (saved === "dusk") document.body.classList.add("ac-dusk");
-      var btn = document.getElementById("ac-theme");
-      if (!btn) return;
-      btn.addEventListener("click", function () {
-        document.body.classList.toggle("ac-dusk");
-        localStorage.setItem(THEME_KEY, document.body.classList.contains("ac-dusk") ? "dusk" : "light");
-        toast(document.body.classList.contains("ac-dusk") ? "Dusk mode on" : "Dusk mode off");
-      });
-    })();
+   // Dusk mode (default). Toggle lets you switch to Light and remembers choice.
+(function initTheme() {
+  var saved = localStorage.getItem(THEME_KEY);
+
+  // Default to dusk unless user explicitly chose "light"
+  var useDusk = saved !== "light";
+  if (useDusk) document.body.classList.add("ac-dusk");
+  else document.body.classList.remove("ac-dusk");
+
+  var btn = document.getElementById("ac-theme");
+  if (!btn) return;
+
+  btn.addEventListener("click", function () {
+    var isDusk = document.body.classList.toggle("ac-dusk");
+    localStorage.setItem(THEME_KEY, isDusk ? "dusk" : "light");
+    toast(isDusk ? "Dusk mode on" : "Light mode on");
+  });
+})();
+
 
     // Help modal
     (function initHelp() {
