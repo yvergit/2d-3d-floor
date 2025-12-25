@@ -713,10 +713,10 @@ body.ac-dusk .modal-footer {
 }
 
 /* Direction modifiers */
-.ac-arrow.is-right { --ac-arrow-dir: 0deg; }
-.ac-arrow.is-left  { --ac-arrow-dir: 180deg; }
-.ac-arrow.is-top   { --ac-arrow-dir: -90deg; }
-.ac-arrow.is-front { --ac-arrow-dir: 90deg; }
+.ac-arrow.is-right { --ac-arrow-dir: 90deg; }
+.ac-arrow.is-left  { --ac-arrow-dir: -90deg; }
+.ac-arrow.is-top   { --ac-arrow-dir: 0deg; }
+.ac-arrow.is-front { --ac-arrow-dir: 180deg; }
 
 /* Arrow strokes */
 .ac-arrow::before {
