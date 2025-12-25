@@ -126,7 +126,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
             <div className="icon" aria-hidden="true">🧱</div>
             <div>
               <div className="cardTitle">Drag-and-drop building</div>
-              <div className="cardText">Walls, rooms, doors, furniture—snappy and precise.</div>
+              <div className="cardText">Click 3d object before adding furniture.</div>
             </div>
           </div>
 
