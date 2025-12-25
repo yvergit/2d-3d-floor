@@ -134,7 +134,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
             <div className="icon" aria-hidden="true">🎥</div>
             <div>
               <div className="cardTitle">Soon</div>
-              <div className="cardText">Walkthrough preview like a game.</div>
+              <div className="cardText">More 3d viewer options.</div>
             </div>
           </div>
         </div>
