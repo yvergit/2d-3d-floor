@@ -9,7 +9,7 @@ const BODY_HTML = `
 				<div class="ac-logo" aria-hidden="true"></div>
 				<div class="ac-brand-text">
 					<div class="ac-title">3Dfloor</div>
-					<div class="ac-subtitle">Cozy floor planning • by <span class="ac-author">Yverdon Pierre Boei</span></div>
+					<div class="ac-subtitle"> 2d floorplanner • 3d <span class="ac-author">viewer</span></div>
 				</div>
 			</div>
 			<div class="ac-top-actions">
