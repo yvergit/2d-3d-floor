@@ -5,10 +5,12 @@ import { useRouter } from "next/navigation";
 
 /**
  * LandingOverlay.jsx
- * - No images required (CSS-only “map” background + big lens)
- * - Shows once per browser by default (localStorage)
- * - ESC to close, locks scroll while open
+ * - CSS-only “map” background + big lens
+ * - showOnce: false by default (always shows while dev)
+ * - ESC closes, locks scroll while open
  * - Get Started routes to ctaHref
+ *
+ * Put your logo here: /public/logo.png
  */
 export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
   const [open, setOpen] = useState(false);
@@ -27,7 +29,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
       }
       const dismissed = window.localStorage.getItem("landing_dismissed");
       if (!dismissed) setOpen(true);
-    } catch {
+    } catch (e) {
       setOpen(true);
     }
   }, [showOnce]);
@@ -45,9 +47,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
   const dismiss = () => {
     try {
       if (showOnce) window.localStorage.setItem("landing_dismissed", "1");
-    } catch {
-      // ignore
-    }
+    } catch (e) {}
     setOpen(false);
   };
 
@@ -81,12 +81,12 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
 
       <div className="layout">
         {/* Big “lens” */}
-        <div className="lens" aria-hidden="false">
+        <div className="lens">
           <div className="lensRing" aria-hidden="true" />
           <div className="lensInner">
             <div className="brand">
-              <span className="logo" aria-hidden="true">
-                ⬣
+              <span className="logoWrap" aria-hidden="true">
+                <img className="logoImg" src="/logo.png" alt="" />
               </span>
               <span className="name">3dfloor</span>
             </div>
@@ -100,7 +100,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
             <div className="actions">
               
               <button className="ghost" onClick={dismiss}>
-                Get started
+                Let's Go!
               </button>
             </div>
 
@@ -115,9 +115,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
         {/* Features */}
         <div className="features" aria-label="Key features">
           <div className="card">
-            <div className="icon" aria-hidden="true">
-              ⚡
-            </div>
+            <div className="icon" aria-hidden="true">⚡</div>
             <div>
               <div className="cardTitle">Instant 2D → 3D</div>
               <div className="cardText">Auto-generate 3D from your 2D layout and iterate fast.</div>
@@ -125,9 +123,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           </div>
 
           <div className="card">
-            <div className="icon" aria-hidden="true">
-              🧱
-            </div>
+            <div className="icon" aria-hidden="true">🧱</div>
             <div>
               <div className="cardTitle">Drag-and-drop building</div>
               <div className="cardText">Walls, rooms, doors, furniture—snappy and precise.</div>
@@ -135,12 +131,10 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           </div>
 
           <div className="card">
-            <div className="icon" aria-hidden="true">
-              🎥
-            </div>
+            <div className="icon" aria-hidden="true">🎥</div>
             <div>
               <div className="cardTitle">Soon</div>
-              <div className="cardText">Preview like a game.</div>
+              <div className="cardText">Walkthrough preview like a game.</div>
             </div>
           </div>
         </div>
@@ -160,13 +154,11 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           position: absolute;
           inset: 0;
           background:
-            /* ink splats */
             radial-gradient(circle at 8% 25%, rgba(0, 0, 0, 0.24) 0 1.2%, transparent 1.3%),
             radial-gradient(circle at 12% 30%, rgba(0, 0, 0, 0.18) 0 0.8%, transparent 0.9%),
             radial-gradient(circle at 86% 78%, rgba(0, 0, 0, 0.2) 0 1%, transparent 1.1%),
             radial-gradient(circle at 78% 15%, rgba(0, 0, 0, 0.16) 0 0.7%, transparent 0.8%),
 
-            /* “continents” blobs */
             radial-gradient(closest-side at 18% 28%, rgba(92, 170, 95, 0.95) 0 60%, transparent 61%),
             radial-gradient(closest-side at 26% 40%, rgba(78, 155, 86, 0.95) 0 55%, transparent 56%),
             radial-gradient(closest-side at 32% 30%, rgba(110, 190, 110, 0.85) 0 45%, transparent 46%),
@@ -178,7 +170,6 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
             radial-gradient(closest-side at 62% 78%, rgba(92, 170, 95, 0.95) 0 50%, transparent 51%),
             radial-gradient(closest-side at 76% 80%, rgba(110, 190, 110, 0.85) 0 38%, transparent 39%),
 
-            /* ocean gradient */
             linear-gradient(180deg, rgba(18, 120, 170, 0.92), rgba(10, 90, 135, 0.92));
 
           filter: saturate(1.08) contrast(1.08);
@@ -190,12 +181,9 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           position: absolute;
           inset: 0;
           background:
-            /* parchment tint */
             linear-gradient(0deg, rgba(255, 240, 210, 0.33), rgba(255, 240, 210, 0.33)),
-            /* faint grid */
             repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 28px),
             repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0 1px, transparent 1px 36px),
-            /* paper fiber */
             repeating-linear-gradient(12deg, rgba(255, 255, 255, 0.06) 0 2px, transparent 2px 10px);
           mix-blend-mode: overlay;
           opacity: 0.95;
@@ -251,9 +239,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           font-size: 18px;
           backdrop-filter: blur(6px);
         }
-        .close:hover {
-          background: rgba(0, 0, 0, 0.68);
-        }
+        .close:hover { background: rgba(0, 0, 0, 0.68); }
 
         /* ===== LENS ===== */
         .lens {
@@ -288,13 +274,11 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           place-items: center;
           text-align: center;
           padding: 56px 54px;
-
           background:
             radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.96), rgba(240, 230, 210, 0.92)),
             radial-gradient(circle, rgba(0, 0, 0, 0.08) 1px, transparent 1.2px);
           background-size: auto, 7px 7px;
           background-position: center, 2px 3px;
-
           box-shadow:
             inset 0 0 0 1px rgba(0, 0, 0, 0.18),
             inset 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -308,7 +292,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           opacity: 0.95;
         }
 
-        .logo {
+        .logoWrap {
           width: 34px;
           height: 34px;
           border-radius: 10px;
@@ -317,7 +301,15 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           background: linear-gradient(180deg, #ffe08a, #ffb647);
           border: 1px solid rgba(0, 0, 0, 0.18);
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
-          font-weight: 900;
+          overflow: hidden;
+        }
+
+        .logoImg {
+          width: 22px;
+          height: 22px;
+          object-fit: contain;
+          display: block;
+          filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.15));
         }
 
         .name {
@@ -367,15 +359,8 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
           transition: transform 120ms ease, filter 120ms ease;
         }
-
-        .cta:hover {
-          transform: translateY(-2px);
-          filter: brightness(1.02);
-        }
-
-        .cta:active {
-          transform: translateY(0px);
-        }
+        .cta:hover { transform: translateY(-2px); filter: brightness(1.02); }
+        .cta:active { transform: translateY(0px); }
 
         .ghost {
           appearance: none;
@@ -387,10 +372,7 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           border: 1px solid rgba(0, 0, 0, 0.12);
           color: rgba(30, 18, 8, 0.78);
         }
-
-        .ghost:hover {
-          background: rgba(0, 0, 0, 0.09);
-        }
+        .ghost:hover { background: rgba(0, 0, 0, 0.09); }
 
         .mini {
           display: flex;
@@ -409,7 +391,6 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
           border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
-        /* ===== FEATURES ===== */
         .features {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -454,23 +435,13 @@ export default function LandingOverlay({ ctaHref = "/app", showOnce = false }) {
         }
 
         @media (max-width: 980px) {
-          .features {
-            grid-template-columns: 1fr;
-          }
-          .lensInner {
-            padding: 46px 26px;
-          }
+          .features { grid-template-columns: 1fr; }
+          .lensInner { padding: 46px 26px; }
         }
 
         @media (max-width: 520px) {
-          .lens {
-            width: 92vmin;
-            height: 92vmin;
-          }
-          .lensInner {
-            width: calc(100% - 56px);
-            height: calc(100% - 56px);
-          }
+          .lens { width: 92vmin; height: 92vmin; }
+          .lensInner { width: calc(100% - 56px); height: calc(100% - 56px); }
         }
       `}</style>
     </div>
