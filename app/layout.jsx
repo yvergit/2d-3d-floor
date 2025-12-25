@@ -1,8 +1,9 @@
-import './globals.css';
+import "./globals.css";
+import LandingOverlayMount from "../components/LandingOverlayMount";
 
 export const metadata = {
-  title: '3dfloor - Floorplan',
-  description: '3dfloor floorplanner (Blueprint3D) wrapped in Next.js',
+  title: "3dfloor - Floorplan",
+  description: "3dfloor floorplanner (Blueprint3D) wrapped in Next.js",
 };
 
 export default function RootLayout({ children }) {
@@ -28,7 +29,13 @@ export default function RootLayout({ children }) {
         {/* Modern UI layer (overrides legacy look but preserves IDs/behavior) */}
         <link rel="stylesheet" href="/css/modern-ui.css" />
       </head>
-      <body>{children}</body>
+
+      <body>
+        {/* Full-screen overlay landing page (renders above everything, incl. your app/page.jsx HTML) */}
+        <LandingOverlayMount />
+
+        {children}
+      </body>
     </html>
   );
 }

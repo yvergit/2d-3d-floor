@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 
+
 const BODY_HTML = `
 	<div id="ac-shell" class="ac-shell">
 		<div id="ac-topbar" class="ac-topbar">
