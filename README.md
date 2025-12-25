@@ -1,4 +1,4 @@
-# Architect3D (Blueprint3D) — Next.js wrapper (Netlify-ready)
+# 3dfloor (Blueprint3D) — Next.js wrapper (Netlify-ready)
 
 This repo wraps the original `build/` demo (jQuery + BP3DJS) inside a modern **Next.js** app so you can deploy and grow it incrementally.
 

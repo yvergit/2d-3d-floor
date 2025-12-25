@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Architect3D - Floorplan',
-  description: 'Architect3D floorplanner (Blueprint3D) wrapped in Next.js',
+  title: '3dfloor - Floorplan',
+  description: '3dfloor floorplanner (Blueprint3D) wrapped in Next.js',
 };
 
 export default function RootLayout({ children }) {
