@@ -8,7 +8,7 @@ const BODY_HTML = `
 			<div class="ac-brand">
 				<div class="ac-logo" aria-hidden="true"></div>
 				<div class="ac-brand-text">
-					<div class="ac-title">3dfloor</div>
+					<div class="ac-title">3Dfloor</div>
 					<div class="ac-subtitle">Cozy floor planning • by <span class="ac-author">Yverdon Pierre Boei</span></div>
 				</div>
 			</div>
@@ -242,7 +242,7 @@ const BODY_HTML = `
 		</div>
 	</div>
 
-	<div class="ac-footer">3dfloor • UI refresh by <strong>Yverdon Pierre Boei</strong> • Blueprint3D engine</div>
+	<div class="ac-footer">3dfloor • by <strong>Yverdon Pierre Boei</strong> • 2026</div>
 	</div>
 `;
 

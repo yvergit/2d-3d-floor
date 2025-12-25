@@ -8,12 +8,56 @@
   --ac-primary: #38b2ac;
   --ac-primary-2: #2f9a95;
   --ac-warn: #f4b860;
+
+  /* Your global shadow tokens */
   --ac-shadow: 0 12px 30px rgba(20, 12, 6, 0.14);
   --ac-shadow-soft: 0 8px 18px rgba(20, 12, 6, 0.12);
+
   --ac-radius: 18px;
   --ac-radius-sm: 14px;
   --ac-font: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --ac-font-title: "Fredoka", "Nunito", system-ui, sans-serif;
+
+  /* === Button-53 surface styling (applied to topbars/controls/etc) === */
+  --ac-surface-base: #FAFAFA;
+  --ac-surface-base-hover: #F5F5F5;
+  --ac-surface-base-active: #F1F1F1;
+
+  --ac-surface-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.48%, #FFF 93.62%, rgba(255, 255, 255, 0.00) 100%),
+    linear-gradient(180deg, rgba(30, 54, 87, 0.00) 0%, rgba(30, 54, 87, 0.01) 100%),
+    var(--ac-surface-base);
+
+  --ac-surface-bg-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.48%, #FFF 93.62%, rgba(255, 255, 255, 0.00) 100%),
+    linear-gradient(180deg, rgba(30, 54, 87, 0.00) 0%, rgba(30, 54, 87, 0.01) 100%),
+    var(--ac-surface-base-hover);
+
+  --ac-surface-bg-active:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.48%, #FFF 93.62%, rgba(255, 255, 255, 0.00) 100%),
+    linear-gradient(180deg, rgba(30, 54, 87, 0.00) 0%, rgba(30, 54, 87, 0.01) 100%),
+    var(--ac-surface-base-active);
+
+  /* Button-53 “rim + inset highlights” combined with your global shadow token */
+  --ac-surface-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.08) 0 -2px 1px 0 inset,
+    rgba(255, 255, 255, 0.50) 0 2px 1px 0 inset,
+    var(--ac-shadow-soft);
+
+  --ac-surface-shadow-strong:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.08) 0 -2px 1px 0 inset,
+    rgba(255, 255, 255, 0.50) 0 2px 1px 0 inset,
+    var(--ac-shadow);
+
+  --ac-surface-shadow-active:
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    rgba(0, 0, 0, 0.08) 0 1px 1px 0 inset,
+    rgba(255, 255, 255, 0.10) 0 2px 1px 0 inset,
+    var(--ac-shadow-soft);
+
+  --ac-surface-text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
 }
 
 body {
@@ -35,11 +79,109 @@ body.ac-dusk {
   --ac-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
   --ac-shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.32);
   background: radial-gradient(1000px 600px at 10% 10%, #1a2a44 0%, var(--ac-bg) 55%, var(--ac-bg-2) 100%);
+
+  /* Dusk surface equivalents (Button-53 vibe, but dark) */
+  --ac-surface-base: rgba(22, 31, 46, 0.72);
+  --ac-surface-base-hover: rgba(26, 36, 54, 0.76);
+  --ac-surface-base-active: rgba(18, 26, 40, 0.78);
+
+  --ac-surface-bg:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.48%, rgba(255, 255, 255, 0.06) 93.62%, rgba(255, 255, 255, 0.00) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.18) 100%),
+    var(--ac-surface-base);
+
+  --ac-surface-bg-hover:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.48%, rgba(255, 255, 255, 0.06) 93.62%, rgba(255, 255, 255, 0.00) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.18) 100%),
+    var(--ac-surface-base-hover);
+
+  --ac-surface-bg-active:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.00) 70.48%, rgba(255, 255, 255, 0.04) 93.62%, rgba(255, 255, 255, 0.00) 100%),
+    linear-gradient(180deg, rgba(0,  0,  0, 0.00) 0%, rgba(0,  0,  0, 0.22) 100%),
+    var(--ac-surface-base-active);
+
+  --ac-surface-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    rgba(0, 0, 0, 0.55) 0 -2px 1px 0 inset,
+    rgba(255, 255, 255, 0.08) 0 2px 1px 0 inset,
+    var(--ac-shadow-soft);
+
+  --ac-surface-shadow-strong:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    rgba(0, 0, 0, 0.55) 0 -2px 1px 0 inset,
+    rgba(255, 255, 255, 0.08) 0 2px 1px 0 inset,
+    var(--ac-shadow);
+
+  --ac-surface-shadow-active:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    rgba(0, 0, 0, 0.60) 0 1px 1px 0 inset,
+    rgba(255, 255, 255, 0.06) 0 2px 1px 0 inset,
+    var(--ac-shadow-soft);
+
+  --ac-surface-text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.35);
 }
 
 .ac-shell {
   height: 100vh;
   width: 100vw;
+}
+
+/* === Apply Button-53 surface styling to ALL “bars / chrome” === */
+.ac-topbar,
+#interface-controls,
+#floorplanner-controls,
+#main-controls,
+#viewcontrols,
+.btn-hint,
+.ac-toast,
+.ac-footer,
+.ac-modal-card,
+.modal-content,
+.ac-recents,
+.ac-help-item,
+.ac-kbd,
+.thumbnail {
+  background: var(--ac-surface-bg);
+  box-shadow: var(--ac-surface-shadow);
+  border: none; /* outline handled by the 0 0 0 1px part of the shadow */
+  text-shadow: var(--ac-surface-text-shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.ac-topbar:hover,
+#interface-controls:hover,
+#floorplanner-controls:hover,
+#main-controls:hover,
+#viewcontrols:hover,
+.btn-hint:hover,
+.ac-toast:hover,
+.ac-footer:hover,
+.ac-modal-card:hover,
+.modal-content:hover,
+.ac-recents:hover,
+.ac-help-item:hover,
+.ac-kbd:hover,
+.thumbnail:hover {
+  background: var(--ac-surface-bg-hover);
+}
+
+.ac-topbar:active,
+#interface-controls:active,
+#floorplanner-controls:active,
+#main-controls:active,
+#viewcontrols:active,
+.btn-hint:active,
+.ac-toast:active,
+.ac-footer:active,
+.ac-modal-card:active,
+.modal-content:active,
+.ac-recents:active,
+.ac-help-item:active,
+.ac-kbd:active,
+.thumbnail:active {
+  background: var(--ac-surface-bg-active);
+  box-shadow: var(--ac-surface-shadow-active);
 }
 
 /* Top bar */
@@ -49,19 +191,14 @@ body.ac-dusk {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 28px); /* keeps mobile spacing */
-  max-width: 777px;       /* controls how small it is on large screens */
+  max-width: 777px;         /* controls how small it is on large screens */
   z-index: 300;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 12px;
   border-radius: var(--ac-radius);
-  background: var(--ac-card);
-  box-shadow: var(--ac-shadow);
-  border: 1px solid var(--ac-border);
-  backdrop-filter: blur(10px);
 }
-
 
 .ac-brand {
   display: flex;
@@ -80,6 +217,7 @@ body.ac-dusk {
     radial-gradient(circle at 70% 70%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
     linear-gradient(145deg, #79e2c8, #2db3a8);
   box-shadow: var(--ac-shadow-soft);
+  text-shadow: none;
 }
 
 body.ac-dusk .ac-logo {
@@ -102,6 +240,7 @@ body.ac-dusk .ac-logo {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: none;
 }
 
 .ac-top-actions {
@@ -121,10 +260,7 @@ body.ac-dusk .ac-logo {
   text-align: center;
   padding: 10px;
   border-radius: var(--ac-radius);
-  background: var(--ac-card);
-  box-shadow: var(--ac-shadow);
-  border: 1px solid var(--ac-border);
-  backdrop-filter: blur(10px);
+  box-shadow: var(--ac-surface-shadow-strong);
 }
 
 /* 2D controls: cozy and centered */
@@ -134,26 +270,18 @@ body.ac-dusk .ac-logo {
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 28px); /* keeps mobile spacing */
-  max-width: 300px;        /* adjust to taste */
+  max-width: 300px;         /* adjust to taste */
   margin: 0;
   padding: 10px;
   border-radius: var(--ac-radius);
-  background: var(--ac-card);
-  box-shadow: var(--ac-shadow-soft);
-  border: 1px solid var(--ac-border);
-  backdrop-filter: blur(10px);
 }
 
-
+/* Main controls (keeps your layout; styling is now surface-based) */
 #main-controls {
   top: 76px;
   left: 14px;
   padding: 10px;
   border-radius: var(--ac-radius);
-  background: var(--ac-card);
-  box-shadow: var(--ac-shadow-soft);
-  border: 1px solid var(--ac-border);
-  backdrop-filter: blur(10px);
 }
 
 /* View controls: modern vertical pill */
@@ -163,49 +291,49 @@ body.ac-dusk .ac-logo {
   bottom: 96px;
   z-index: 460;
   border-radius: var(--ac-radius);
-  background: var(--ac-card);
-  box-shadow: var(--ac-shadow);
-  border: 1px solid var(--ac-border);
   padding: 8px;
-  backdrop-filter: blur(10px);
+  box-shadow: var(--ac-surface-shadow-strong);
 }
 
-/* Buttons: override Bootstrap look without breaking behavior */
+/* Buttons: keep behavior; optionally keep your current look or let them inherit surface */
 .btn {
   border-radius: 999px !important;
-  border: 1px solid var(--ac-border) !important;
-  background: rgba(255, 255, 255, 0.74) !important;
-  color: var(--ac-ink) !important;
-  box-shadow: 0 6px 14px rgba(20, 12, 6, 0.12) !important;
-  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
-}
+  border: 0 !important;
 
-body.ac-dusk .btn {
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: var(--ac-surface-bg) !important;
+  color: var(--ac-ink) !important;
+
+  box-shadow: var(--ac-surface-shadow) !important;
+  text-shadow: var(--ac-surface-text-shadow);
+
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(20, 12, 6, 0.16) !important;
+  background: var(--ac-surface-bg-hover) !important;
+  box-shadow: var(--ac-surface-shadow-strong) !important;
 }
 
 .btn:active {
   transform: translateY(0px);
+  background: var(--ac-surface-bg-active) !important;
+  box-shadow: var(--ac-surface-shadow-active) !important;
 }
 
 .btn.btn-primary,
 .btn-primary {
   background: linear-gradient(180deg, var(--ac-primary), var(--ac-primary-2)) !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
   color: #0b1616 !important;
   font-weight: 800;
+  text-shadow: none !important;
 }
 
 .btn.active,
 .btn-primary.active,
 .btn.wireframe-active {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.25), 0 10px 18px rgba(20, 12, 6, 0.18) !important;
+  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.25), var(--ac-shadow) !important;
 }
 
 .btn.disabled,
@@ -213,19 +341,15 @@ body.ac-dusk .btn {
   opacity: 0.55;
   transform: none;
   box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* Hint bubble */
 .btn-hint {
   left: 16px;
   bottom: 16px;
-  background: var(--ac-card);
-  border: 1px solid var(--ac-border);
-  color: var(--ac-ink);
   border-radius: 999px;
   padding: 10px 12px;
-  box-shadow: var(--ac-shadow-soft);
-  backdrop-filter: blur(10px);
 }
 
 /* Toasts */
@@ -244,14 +368,11 @@ body.ac-dusk .btn {
   pointer-events: none;
   padding: 10px 12px;
   border-radius: 14px;
-  background: var(--ac-card);
-  border: 1px solid var(--ac-border);
-  box-shadow: var(--ac-shadow-soft);
-  backdrop-filter: blur(10px);
   max-width: 320px;
   font-size: 13px;
 }
 
+/* Banner (keeps its warm gradient, but uses your shadow token) */
 .ac-banner {
   position: fixed;
   left: 14px;
@@ -265,13 +386,11 @@ body.ac-dusk .btn {
   padding: 10px 12px;
   border-radius: var(--ac-radius);
   background: linear-gradient(180deg, rgba(244, 184, 96, 0.55), rgba(244, 184, 96, 0.25));
-  border: 1px solid rgba(0,0,0,0.10);
+  border: none;
   box-shadow: var(--ac-shadow-soft);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-}
-
-body.ac-dusk .ac-banner {
-  border-color: rgba(255,255,255,0.14);
+  text-shadow: var(--ac-surface-text-shadow);
 }
 
 .ac-banner-actions {
@@ -292,26 +411,24 @@ body.ac-dusk .ac-banner {
 
 .ac-inventory-tools .form-control {
   border-radius: 999px;
-  border: 1px solid var(--ac-border);
-  background: rgba(255,255,255,0.7);
-  box-shadow: 0 6px 14px rgba(20, 12, 6, 0.08);
-}
-
-body.ac-dusk .ac-inventory-tools .form-control {
-  background: rgba(255,255,255,0.08);
+  border: 0;
+  background: var(--ac-surface-bg);
+  box-shadow: var(--ac-surface-shadow);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   color: var(--ac-ink);
 }
 
+.ac-inventory-tools .form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.20), var(--ac-surface-shadow-strong);
+}
+
+/* Recents */
 .ac-recents {
   padding: 10px;
   border-radius: var(--ac-radius-sm);
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid var(--ac-border);
   margin-bottom: 10px;
-}
-
-body.ac-dusk .ac-recents {
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .ac-recents-title {
@@ -335,9 +452,8 @@ body.ac-dusk .ac-recents {
 .ac-modal-card {
   width: min(640px, 100%);
   border-radius: var(--ac-radius);
-  background: var(--ac-card);
-  border: 1px solid var(--ac-border);
-  box-shadow: var(--ac-shadow);
+  box-shadow: var(--ac-surface-shadow-strong);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
@@ -346,7 +462,11 @@ body.ac-dusk .ac-recents {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--ac-border);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+body.ac-dusk .ac-modal-head {
+  border-bottom-color: rgba(255,255,255,0.10);
 }
 
 .ac-modal-title {
@@ -375,12 +495,6 @@ body.ac-dusk .ac-recents {
   gap: 10px;
   padding: 10px 12px;
   border-radius: var(--ac-radius-sm);
-  border: 1px solid var(--ac-border);
-  background: rgba(255, 255, 255, 0.55);
-}
-
-body.ac-dusk .ac-help-item {
-  background: rgba(255, 255, 255, 0.06);
 }
 
 .ac-kbd {
@@ -388,17 +502,12 @@ body.ac-dusk .ac-help-item {
   font-size: 12px;
   padding: 6px 9px;
   border-radius: 10px;
-  border: 1px solid var(--ac-border);
-  background: rgba(255, 255, 255, 0.65);
-}
-
-body.ac-dusk .ac-kbd {
-  background: rgba(255, 255, 255, 0.10);
 }
 
 .ac-help-note {
   margin-top: 12px;
   color: var(--ac-muted);
+  text-shadow: none;
 }
 
 /* Footer */
@@ -409,23 +518,25 @@ body.ac-dusk .ac-kbd {
   z-index: 430;
   padding: 8px 10px;
   border-radius: 999px;
-  border: 1px solid var(--ac-border);
-  background: var(--ac-card);
-  box-shadow: var(--ac-shadow-soft);
   font-size: 12px;
   color: var(--ac-muted);
-  backdrop-filter: blur(10px);
+  text-shadow: none;
 }
 
 /* Make modal look less bootstrap-y */
 .modal-content {
   border-radius: var(--ac-radius) !important;
-  border: 1px solid var(--ac-border) !important;
-  box-shadow: var(--ac-shadow) !important;
+  border: 0 !important;
+  box-shadow: var(--ac-surface-shadow-strong) !important;
 }
 
 .modal-header, .modal-footer {
-  border-color: var(--ac-border) !important;
+  border-color: rgba(0,0,0,0.06) !important;
+}
+
+body.ac-dusk .modal-header,
+body.ac-dusk .modal-footer {
+  border-color: rgba(255,255,255,0.10) !important;
 }
 
 .modal-header .modal-title {
@@ -434,13 +545,30 @@ body.ac-dusk .ac-kbd {
 
 .thumbnail {
   border-radius: var(--ac-radius-sm) !important;
-  border: 1px solid var(--ac-border) !important;
+  border: 0 !important;
   overflow: hidden;
 }
 
 .thumbnail img {
   border-radius: 12px;
 }
+
+/* Optional: keep your original Button-53 class around (now driven by tokens) */
+.button-53 {
+  padding: 12px 26px;
+  border: 0;
+  font-size: 16px;
+  transition: all 150ms ease-in-out;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--ac-ink);
+  background: var(--ac-surface-bg);
+  box-shadow: var(--ac-surface-shadow);
+  text-shadow: var(--ac-surface-text-shadow);
+}
+
+.button-53:hover { background: var(--ac-surface-bg-hover); }
+.button-53:active { background: var(--ac-surface-bg-active); box-shadow: var(--ac-surface-shadow-active); }
 
 /* Small screens: reduce chrome */
 @media (max-width: 560px) {
