@@ -1,7 +1,8 @@
 {
-  "name": "3dfloor-next-cozy",
-  "version": "1.0.0",
+  "name": "architect3d-nextjs",
   "private": true,
+  "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,13 +10,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "^15.5.9",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "next": "^14.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@types/node": "25.0.3",
-    "@types/react": "19.2.7",
-    "typescript": "5.9.3"
+    "@netlify/plugin-nextjs": "^5.9.4"
   }
 }

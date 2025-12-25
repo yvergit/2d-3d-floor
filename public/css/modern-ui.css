@@ -1,0 +1,453 @@
+:root {
+  --ac-bg: #fbf7ee;
+  --ac-bg-2: #f3efe1;
+  --ac-card: rgba(255, 255, 255, 0.88);
+  --ac-border: rgba(70, 45, 20, 0.16);
+  --ac-ink: #2e261c;
+  --ac-muted: rgba(46, 38, 28, 0.65);
+  --ac-primary: #38b2ac;
+  --ac-primary-2: #2f9a95;
+  --ac-warn: #f4b860;
+  --ac-shadow: 0 12px 30px rgba(20, 12, 6, 0.14);
+  --ac-shadow-soft: 0 8px 18px rgba(20, 12, 6, 0.12);
+  --ac-radius: 18px;
+  --ac-radius-sm: 14px;
+  --ac-font: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --ac-font-title: "Fredoka", "Nunito", system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--ac-font);
+  color: var(--ac-ink);
+  background: radial-gradient(1000px 600px at 10% 10%, #ffffff 0%, var(--ac-bg) 55%, var(--ac-bg-2) 100%);
+}
+
+/* Dusk mode */
+body.ac-dusk {
+  --ac-bg: #0e1520;
+  --ac-bg-2: #121b28;
+  --ac-card: rgba(22, 31, 46, 0.72);
+  --ac-border: rgba(255, 255, 255, 0.12);
+  --ac-ink: rgba(255, 255, 255, 0.92);
+  --ac-muted: rgba(255, 255, 255, 0.65);
+  --ac-primary: #66d9c9;
+  --ac-primary-2: #4fc6b4;
+  --ac-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
+  --ac-shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.32);
+  background: radial-gradient(1000px 600px at 10% 10%, #1a2a44 0%, var(--ac-bg) 55%, var(--ac-bg-2) 100%);
+}
+
+.ac-shell {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Top bar */
+.ac-topbar {
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px); /* keeps mobile spacing */
+  max-width: 777px;       /* controls how small it is on large screens */
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--ac-radius);
+  background: var(--ac-card);
+  box-shadow: var(--ac-shadow);
+  border: 1px solid var(--ac-border);
+  backdrop-filter: blur(10px);
+}
+
+
+.ac-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ac-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  border: 1px solid var(--ac-border);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.75), rgba(255,255,255,0) 55%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
+    linear-gradient(145deg, #79e2c8, #2db3a8);
+  box-shadow: var(--ac-shadow-soft);
+}
+
+body.ac-dusk .ac-logo {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.20), rgba(255,255,255,0) 55%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%),
+    linear-gradient(145deg, #6fe8d3, #2e9fb0);
+}
+
+.ac-title {
+  font-family: var(--ac-font-title);
+  font-size: 18px;
+  letter-spacing: 0.2px;
+  line-height: 1.1;
+}
+
+.ac-subtitle {
+  font-size: 12px;
+  color: var(--ac-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ac-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Make the legacy control bar a modern floating dock */
+#interface-controls {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 450;
+  width: auto;
+  text-align: center;
+  padding: 10px;
+  border-radius: var(--ac-radius);
+  background: var(--ac-card);
+  box-shadow: var(--ac-shadow);
+  border: 1px solid var(--ac-border);
+  backdrop-filter: blur(10px);
+}
+
+/* 2D controls: cozy and centered */
+#floorplanner-controls {
+  position: fixed;
+  top: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 28px); /* keeps mobile spacing */
+  max-width: 300px;        /* adjust to taste */
+  margin: 0;
+  padding: 10px;
+  border-radius: var(--ac-radius);
+  background: var(--ac-card);
+  box-shadow: var(--ac-shadow-soft);
+  border: 1px solid var(--ac-border);
+  backdrop-filter: blur(10px);
+}
+
+
+#main-controls {
+  top: 76px;
+  left: 14px;
+  padding: 10px;
+  border-radius: var(--ac-radius);
+  background: var(--ac-card);
+  box-shadow: var(--ac-shadow-soft);
+  border: 1px solid var(--ac-border);
+  backdrop-filter: blur(10px);
+}
+
+/* View controls: modern vertical pill */
+#viewcontrols {
+  position: fixed;
+  right: 14px;
+  bottom: 96px;
+  z-index: 460;
+  border-radius: var(--ac-radius);
+  background: var(--ac-card);
+  box-shadow: var(--ac-shadow);
+  border: 1px solid var(--ac-border);
+  padding: 8px;
+  backdrop-filter: blur(10px);
+}
+
+/* Buttons: override Bootstrap look without breaking behavior */
+.btn {
+  border-radius: 999px !important;
+  border: 1px solid var(--ac-border) !important;
+  background: rgba(255, 255, 255, 0.74) !important;
+  color: var(--ac-ink) !important;
+  box-shadow: 0 6px 14px rgba(20, 12, 6, 0.12) !important;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+body.ac-dusk .btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(20, 12, 6, 0.16) !important;
+}
+
+.btn:active {
+  transform: translateY(0px);
+}
+
+.btn.btn-primary,
+.btn-primary {
+  background: linear-gradient(180deg, var(--ac-primary), var(--ac-primary-2)) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #0b1616 !important;
+  font-weight: 800;
+}
+
+.btn.active,
+.btn-primary.active,
+.btn.wireframe-active {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(56, 178, 172, 0.25), 0 10px 18px rgba(20, 12, 6, 0.18) !important;
+}
+
+.btn.disabled,
+.btn[disabled] {
+  opacity: 0.55;
+  transform: none;
+  box-shadow: none !important;
+}
+
+/* Hint bubble */
+.btn-hint {
+  left: 16px;
+  bottom: 16px;
+  background: var(--ac-card);
+  border: 1px solid var(--ac-border);
+  color: var(--ac-ink);
+  border-radius: 999px;
+  padding: 10px 12px;
+  box-shadow: var(--ac-shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+/* Toasts */
+.ac-toast-root {
+  position: fixed;
+  top: 84px;
+  right: 16px;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.ac-toast {
+  pointer-events: none;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--ac-card);
+  border: 1px solid var(--ac-border);
+  box-shadow: var(--ac-shadow-soft);
+  backdrop-filter: blur(10px);
+  max-width: 320px;
+  font-size: 13px;
+}
+
+.ac-banner {
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  top: 76px;
+  z-index: 550;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--ac-radius);
+  background: linear-gradient(180deg, rgba(244, 184, 96, 0.55), rgba(244, 184, 96, 0.25));
+  border: 1px solid rgba(0,0,0,0.10);
+  box-shadow: var(--ac-shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+body.ac-dusk .ac-banner {
+  border-color: rgba(255,255,255,0.14);
+}
+
+.ac-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ac-hidden { display: none !important; }
+
+/* Inventory tools */
+.ac-inventory-tools {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.ac-inventory-tools .form-control {
+  border-radius: 999px;
+  border: 1px solid var(--ac-border);
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 6px 14px rgba(20, 12, 6, 0.08);
+}
+
+body.ac-dusk .ac-inventory-tools .form-control {
+  background: rgba(255,255,255,0.08);
+  color: var(--ac-ink);
+}
+
+.ac-recents {
+  padding: 10px;
+  border-radius: var(--ac-radius-sm);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--ac-border);
+  margin-bottom: 10px;
+}
+
+body.ac-dusk .ac-recents {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ac-recents-title {
+  font-family: var(--ac-font-title);
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* Help modal (custom, non-bootstrap) */
+.ac-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 16px;
+}
+
+.ac-modal-card {
+  width: min(640px, 100%);
+  border-radius: var(--ac-radius);
+  background: var(--ac-card);
+  border: 1px solid var(--ac-border);
+  box-shadow: var(--ac-shadow);
+  backdrop-filter: blur(12px);
+}
+
+.ac-modal-head {
+  padding: 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ac-border);
+}
+
+.ac-modal-title {
+  font-family: var(--ac-font-title);
+  font-size: 16px;
+}
+
+.ac-modal-body {
+  padding: 12px;
+}
+
+.ac-help-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .ac-help-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.ac-help-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--ac-radius-sm);
+  border: 1px solid var(--ac-border);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+body.ac-dusk .ac-help-item {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.ac-kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  padding: 6px 9px;
+  border-radius: 10px;
+  border: 1px solid var(--ac-border);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+body.ac-dusk .ac-kbd {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.ac-help-note {
+  margin-top: 12px;
+  color: var(--ac-muted);
+}
+
+/* Footer */
+.ac-footer {
+  position: fixed;
+  left: 14px;
+  bottom: 88px;
+  z-index: 430;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--ac-border);
+  background: var(--ac-card);
+  box-shadow: var(--ac-shadow-soft);
+  font-size: 12px;
+  color: var(--ac-muted);
+  backdrop-filter: blur(10px);
+}
+
+/* Make modal look less bootstrap-y */
+.modal-content {
+  border-radius: var(--ac-radius) !important;
+  border: 1px solid var(--ac-border) !important;
+  box-shadow: var(--ac-shadow) !important;
+}
+
+.modal-header, .modal-footer {
+  border-color: var(--ac-border) !important;
+}
+
+.modal-header .modal-title {
+  font-family: var(--ac-font-title);
+}
+
+.thumbnail {
+  border-radius: var(--ac-radius-sm) !important;
+  border: 1px solid var(--ac-border) !important;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  border-radius: 12px;
+}
+
+/* Small screens: reduce chrome */
+@media (max-width: 560px) {
+  .ac-subtitle { display: none; }
+  #floorplanner-controls { left: 10px; right: 10px; }
+  #main-controls { left: 10px; }
+  #interface-controls { left: 10px; right: 10px; }
+  .ac-topbar { left: 10px; right: 10px; }
+  .ac-footer { display: none; }
+}
